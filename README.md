@@ -1,4 +1,4 @@
-# 🧘 ZenBus - Bus Reservation System
+# ZenBus - Bus Reservation System
 
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-16%2B-brightgreen)](https://nodejs.org/)
