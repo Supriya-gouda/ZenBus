@@ -341,11 +341,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Optimize images and assets
 - Enable gzip compression
 
-## 📬 Contact
 
-For questions, suggestions, or support, please contact:
-- **Email:** [your.email@example.com](mailto:your.email@example.com)
-- **GitHub Issues:** [Open an issue](../../issues)
 
 ---
 
