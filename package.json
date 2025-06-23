@@ -1,0 +1,43 @@
+{
+  "name": "zenbus",
+  "version": "1.0.0",
+  "description": "ZenBus - A comprehensive bus booking and management system built with React and Node.js",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run dev",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "zenbus",
+    "bus",
+    "reservation",
+    "booking",
+    "react",
+    "nodejs",
+    "mysql",
+    "express",
+    "travel",
+    "management"
+  ],
+  "author": "ZenBus Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/zenbus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/zenbus/issues"
+  },
+  "homepage": "https://github.com/your-username/zenbus#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
