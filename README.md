@@ -1,4 +1,4 @@
-# 🧘 ZenBus - Bus Reservation System
+# ZenBus - Bus Reservation System
 
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-16%2B-brightgreen)](https://nodejs.org/)
@@ -343,11 +343,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Optimize images and assets
 - Enable gzip compression
 
-## 📬 Contact
 
-For questions, suggestions, or support, please contact:
-- **Email:** [your.email@example.com](mailto:your.email@example.com)
-- **GitHub Issues:** [Open an issue](../../issues)
 
 ---
 
