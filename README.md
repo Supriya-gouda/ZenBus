@@ -159,7 +159,9 @@ A comprehensive, full-stack bus booking and management system built with modern 
 7. **Access the Application**
    - **User Interface**: http://localhost:5173 (or your Vite dev port)
    - **Admin Dashboard**: http://localhost:5173/admin-login
-   - **Backend API**: http://localhost:8080
+   - **Backend API**: http://localhost:8080 (or next available port if 8080 is in use)
+
+   > **Note:** The backend will attempt to start on port 8080. If that port is already in use by another application, it will automatically fall back to 8081, 8082, etc. The startup message will indicate which port the backend is actually running on.
 
 ## 🔐 Default Credentials
 

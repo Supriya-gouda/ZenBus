@@ -19,39 +19,56 @@ export const BookingProvider = ({ children }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [currentBooking, setCurrentBooking] = useState(null);
 
+  const normalizeSearchResult = (schedule) => {
+    const amenitiesValue = schedule.amenities;
+    const amenities = Array.isArray(amenitiesValue)
+      ? amenitiesValue
+      : typeof amenitiesValue === 'string'
+        ? amenitiesValue.split(',').map(item => item.trim()).filter(Boolean)
+        : [];
+
+    const departureTimeValue = schedule.departure_time || schedule.departureTime;
+    const arrivalTimeValue = schedule.arrival_time || schedule.arrivalTime;
+
+    return {
+      id: schedule.schedule_id || schedule.scheduleId || schedule.id,
+      scheduleId: schedule.schedule_id || schedule.scheduleId || schedule.id,
+      busNumber: schedule.bus_number || schedule.busNumber || 'N/A',
+      busType: schedule.bus_type || schedule.busType || 'N/A',
+      operator: schedule.operator || 'Bus Operator',
+      route: schedule.route || `${schedule.source || 'Unknown'} → ${schedule.destination || 'Unknown'}`,
+      departureTime: departureTimeValue
+        ? new Date(departureTimeValue).toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          })
+        : 'N/A',
+      arrivalTime: arrivalTimeValue
+        ? new Date(arrivalTimeValue).toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          })
+        : 'N/A',
+      duration: schedule.duration || calculateDuration(departureTimeValue, arrivalTimeValue),
+      fare: Number(schedule.fare || 0),
+      availableSeats: schedule.available_seats ?? schedule.availableSeats ?? 0,
+      totalSeats: schedule.total_seats ?? schedule.totalSeats ?? 0,
+      amenities,
+      rating: schedule.rating ?? 4.0,
+      reviews: schedule.reviews ?? 50,
+      source: schedule.source || '',
+      destination: schedule.destination || ''
+    };
+  };
+
   const searchBuses = async (searchData) => {
     try {
       const result = await busService.searchBuses(searchData);
 
       if (result.success && result.buses && result.buses.length > 0) {
-        // Transform backend data to frontend format
-        const transformedResults = result.buses.map(schedule => ({
-          id: schedule.schedule_id,
-          scheduleId: schedule.schedule_id,
-          busNumber: schedule.bus_number,
-          busType: schedule.bus_type,
-          operator: 'Bus Operator', // Default operator name
-          route: `${schedule.source} → ${schedule.destination}`,
-          departureTime: new Date(schedule.departure_time).toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false
-          }),
-          arrivalTime: new Date(schedule.arrival_time).toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false
-          }),
-          duration: calculateDuration(schedule.departure_time, schedule.arrival_time),
-          fare: parseFloat(schedule.fare),
-          availableSeats: schedule.available_seats,
-          totalSeats: schedule.total_seats,
-          amenities: schedule.amenities ? schedule.amenities.split(', ') : [],
-          rating: 4.0, // Default rating
-          reviews: 50, // Default reviews
-          source: schedule.source,
-          destination: schedule.destination
-        }));
+        const transformedResults = result.buses.map(normalizeSearchResult);
 
         setSearchResults(transformedResults);
         return transformedResults;

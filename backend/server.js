@@ -24,7 +24,7 @@ const busStaffRoutes = require('./routes/busStaffRoutes');
 const db = require('./db/connection');
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = parseInt(process.env.PORT, 10) || 8080;
 
 // Middleware
 app.use(cors({
@@ -92,10 +92,23 @@ app.use((req, res) => {
 db.testConnection()
   .then(connected => {
     if (connected) {
-      // Start server
-      app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-      });
+      // Start server with graceful port fallback
+      const startServer = (port) => {
+        const server = app.listen(port, () => {
+          console.log(`Server running on port ${port}`);
+        });
+
+        server.on('error', (err) => {
+          if (err.code === 'EADDRINUSE') {
+            console.warn(`Port ${port} is already in use, trying port ${port + 1}...`);
+            startServer(port + 1);
+          } else {
+            throw err;
+          }
+        });
+      };
+
+      startServer(PORT);
     } else {
       console.error('Failed to connect to database. Server not started.');
     }

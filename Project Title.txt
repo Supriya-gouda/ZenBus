@@ -1,0 +1,220 @@
+ Project Title:
+
+ZenBus – Smart Bus Reservation System
+
+
+
+Project Summary:
+
+ZenBus is an intelligent, full-stack Bus Reservation System developed to modernize and streamline the process of online bus ticket booking, management, and monitoring. It offers a seamless experience for both Users (Passengers) and Admins (Operators/Managers) through dedicated portals.
+
+The main objective of ZenBus is to provide a real-time, user-friendly, and secure solution for managing bus schedules, seat reservations, payments, and operational data. This system helps eliminate the hassle of manual bookings and brings transparency and efficiency to public transport services.
+
+
+
+Frontend Implementation:
+
+The frontend of ZenBus is developed using React.js with Vite, styled using Tailwind CSS, and managed via Visual Studio Code. The responsive UI allows users to:
+
+Register and log in
+
+View/search available buses by routes and timings
+
+Select seats in real-time
+
+Make bookings and view their history
+
+Give feedback on travel experience
+
+Admins can access a dashboard to:
+
+Add/manage buses, schedules, drivers, and routes
+
+Handle user bookings, refunds, and payments
+
+Respond to feedback and monitor system metrics
+
+
+
+Backend & Database:
+
+The backend is powered by Node.js and Express.js, and data is managed in MySQL 8.0+, following a 3NF (Third Normal Form) normalized schema for optimal performance and scalability. The system also includes:
+
+Authentication with bcrypt for password hashing
+
+Role-based access control
+
+Session-based login management
+
+RESTful API architecture
+
+Advanced database features include:
+
+Triggers (e.g., updating seat availability, logging bookings)
+
+Stored procedures (e.g., checking available seats, generating booking reports)
+
+Cascading deletes and data integrity constraints
+
+
+
+Key Features:
+
+Real-time seat selection and availability
+
+Route and schedule filtering with pagination
+
+Dynamic booking and cancellation flow
+
+Payment and refund status tracking
+
+Feedback management and admin responses
+
+Maintenance tracking for buses
+
+Email confirmation system (mocked for testing)
+
+CSV export for reports and admin logs
+
+Dashboard analytics for both users and admins
+
+Conclusion:
+
+ZenBus successfully addresses the inefficiencies of traditional bus booking systems by offering a scalable, secure, and highly interactive platform for both passengers and administrators. With modular code architecture, modern tools, and a user-focused approach, ZenBus provides a blueprint for transforming public transportation into a smart service.
+User Features (Passenger Portal)
+User Registration & Login
+
+Secure registration and login with validation
+
+Session-based authentication
+
+Real-Time Bus Search
+
+Search by source, destination, date
+
+Filter by departure time, bus type, etc.
+
+Seat Selection
+
+Interactive seat layout display
+
+Select available seats in real-time
+
+Booking Management
+
+Make bookings and view past bookings
+
+Cancel bookings with automatic seat restoration
+
+Payment Integration (Mocked)
+
+View fare summary and make mock payments
+
+Track payment and refund status
+
+Email Confirmation (Mocked)
+
+Booking confirmation email (simulated)
+
+Feedback System
+
+Submit ratings and feedback after journey
+
+View feedback history
+
+Profile Dashboard
+
+View personal information, travel history, and feedback
+
+👩‍💼 Admin Features (Admin Portal)
+Admin Dashboard
+
+Summary metrics (total bookings, buses, users, revenue, etc.)
+
+Daily/weekly report charts
+
+Bus Management
+
+Add, update, or remove bus details
+
+Assign drivers and staff
+
+Route & Schedule Management
+
+Define routes with stops, timings, fares
+
+Manage daily schedules
+
+User Management
+
+View users and their bookings
+
+Block/mute spammers or abusers
+
+Booking Oversight
+
+View all bookings and statuses
+
+Modify/cancel bookings (in special cases)
+
+Payment Management
+
+Monitor transactions and refunds
+
+Resolve payment issues
+
+Feedback Moderation
+
+Read, respond to, or delete user feedback
+
+Maintenance Tracking
+
+Log completed and upcoming bus maintenance
+
+Auto-create maintenance on bus status change
+
+Report Exporting
+
+Export booking/payment data in CSV format
+
+Audit & Logging
+
+Track booking history and changes
+
+Trigger-based booking audit logs
+
+⚙️ System-Level & Advanced Features
+Secure Authentication
+
+Bcrypt password hashing
+
+Role-based access control (User/Admin)
+
+MySQL Database (3NF)
+
+Optimized schema with PK/FK integrity
+
+Triggers and stored procedures for automation
+
+Cascading Deletes
+
+Auto-removal of dependent records on deletion
+
+Database Triggers
+
+Auto-update available seats on booking/cancel
+
+Log booking changes to history
+
+Auto-schedule maintenance after 50 bookings
+
+Stored Procedures
+
+Seat availability check
+
+Booking report generation
+
+Dashboard Analytics
+
+Key metrics with filters and charts
+

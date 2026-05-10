@@ -74,24 +74,26 @@ const SearchBuses = () => {
   const sortedResults = [...searchResults].sort((a, b) => {
     switch (sortBy) {
       case 'fare':
-        return a.fare - b.fare;
+        return (a.fare || 0) - (b.fare || 0);
       case 'duration':
-        return a.duration.localeCompare(b.duration);
+        return String(a.duration || '').localeCompare(String(b.duration || ''));
       case 'rating':
-        return b.rating - a.rating;
+        return (b.rating || 0) - (a.rating || 0);
       default:
-        return a.departureTime.localeCompare(b.departureTime);
+        return String(a.departureTime || '').localeCompare(String(b.departureTime || ''));
     }
   });
 
   const filteredResults = sortedResults.filter(bus => {
+    const busType = String(bus.busType || '').toLowerCase();
+
     switch (filterBy) {
       case 'ac':
-        return bus.busType.toLowerCase().includes('ac');
+        return busType.includes('ac');
       case 'sleeper':
-        return bus.busType.toLowerCase().includes('sleeper');
+        return busType.includes('sleeper');
       case 'seater':
-        return bus.busType.toLowerCase().includes('seater');
+        return busType.includes('seater');
       default:
         return true;
     }
